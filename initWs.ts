@@ -51,6 +51,7 @@ export default async function initWs() {
       setConnectStatus("initial");
       clearInterval(interval!);
       wsCapsule?.terminate().catch(() => {});
+      started = 0;
       initWs();
     }
   }, 5000);
