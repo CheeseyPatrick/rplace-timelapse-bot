@@ -54,5 +54,5 @@ export default async function initWs() {
       started = 0;
       initWs();
     }
-  }, 5000);
+  }, 20000);
 }
