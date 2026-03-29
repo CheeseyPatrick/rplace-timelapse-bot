@@ -16,8 +16,8 @@ export async function startLapsing() {
   if (started === 1) return;
   started = 1;
 
-  // Every minute
-  cron.schedule("* * * * *", async () => {
+  // Every 30 seconds
+  cron.schedule("*/30 * * * * *", async () => {
     try {
       await makeTimelapseAndUpload();
     } catch (err) {
