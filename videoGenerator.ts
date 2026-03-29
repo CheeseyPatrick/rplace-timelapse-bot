@@ -317,7 +317,7 @@ export function encodeFramesToAvi(
 
 export async function makeTimelapseAndUpload() {
   console.log("Making timelapse...");
-  const snapshot = frames.slice(-30);
+  const snapshot = frames.slice(-15);
   const video = await encodeFramesToWebM(snapshot);
   await sendFiles("#live", [
     CheeseyFile.from(video, "webm").toDiscordAttachment(),
