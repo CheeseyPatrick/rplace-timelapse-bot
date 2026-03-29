@@ -75,7 +75,7 @@ export function encodeFramesToWebM(
       "500k",
       "-g",
       "9999",
-      "-b:v",
+      "-sc_threshold",
       "0",
       "-deadline",
       "realtime",
@@ -114,8 +114,10 @@ export function encodeFramesToWebM(
 
     (async () => {
       const writeTime = performance.now();
-      for (const { frame } of last60) {
+      for (let i = 0; i < last60.length; i++) {
+        const { frame } = last60[i];
         await writeWithDrain(ffmpeg.stdin, frame);
+        last60[i] = null as any; // An attempt to save my memory
       }
       console.log(
         `piping encodeFramesToWebM took ${(performance.now() - writeTime).toFixed(1)}ms`,
