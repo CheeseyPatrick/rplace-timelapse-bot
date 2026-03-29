@@ -100,8 +100,8 @@ export function generateFrame() {
     // @ts-expect-error - frame is not gonna be null but the opps (typescript) wont let me put a !
     frames.push({ time: date.getTime(), frame: frame.toBuffer("raw") });
 
-    if (frames.length > 70) {
-      frames.splice(0, frames.length - 70);
+    if (frames.length > 35) {
+      frames.splice(0, frames.length - 35);
     }
   }
 }
