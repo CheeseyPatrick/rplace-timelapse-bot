@@ -14,6 +14,14 @@ import {
   makeTimelapseAndUpload,
 } from "./videoGenerator";
 
+process.on("uncaughtException", (err) => {
+  console.error("[UNCAUGHT EXCEPTION]", err);
+});
+
+process.on("unhandledRejection", (reason) => {
+  console.error("[UNHANDLED REJECTION]", reason);
+});
+
 await Promise.all([initWs(), startFrameGenerator(), startBot()]);
 
 await startLapsing();
